@@ -1,6 +1,12 @@
 #!/bin/bash
 
 case $1 in
+  "begin" )
+    EMBED_COLOR=3066993
+    STATUS_MESSAGE="Started"
+    AVATAR="https://travis-ci.org/images/logos/TravisCI-Mascot-blue.png"
+    ;;
+    
   "success" )
     EMBED_COLOR=3066993
     STATUS_MESSAGE="Passed"
