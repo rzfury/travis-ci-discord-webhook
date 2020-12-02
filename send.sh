@@ -4,24 +4,27 @@ case $1 in
   "begin" )
     EMBED_COLOR=3066993
     STATUS_MESSAGE="Started"
+    BUILD_MESSAGE="BUILD STARTED"
     AVATAR="https://travis-ci.org/images/logos/TravisCI-Mascot-blue.png"
     ;;
     
   "success" )
     EMBED_COLOR=3066993
     STATUS_MESSAGE="Passed"
+    BUILD_MESSAGE="BUILD SUCESS"
     AVATAR="https://travis-ci.org/images/logos/TravisCI-Mascot-blue.png"
     ;;
 
   "failure" )
     EMBED_COLOR=15158332
     STATUS_MESSAGE="Failed"
+    BUILD_MESSAGE="BUILD FAILED"
     AVATAR="https://travis-ci.org/images/logos/TravisCI-Mascot-red.png"
     ;;
 
   * )
     EMBED_COLOR=0
-    STATUS_MESSAGE="Status Unknown"
+    STATUS_MESSAGE="STATUS: $1"
     AVATAR="https://travis-ci.org/images/logos/TravisCI-Mascot-1.png"
     ;;
 esac
@@ -66,7 +69,7 @@ WEBHOOK_DATA='{
   "embeds": [ {
     "color": '$EMBED_COLOR',
     "author": {
-      "name": "Job #'"$TRAVIS_JOB_NUMBER"' (Build #'"$TRAVIS_BUILD_NUMBER"') '"$STATUS_MESSAGE"' - '"$TRAVIS_REPO_SLUG"'",
+      "name": "'"BUILD_MESSAGE"' - Job #'"$TRAVIS_JOB_NUMBER"' (Build #'"$TRAVIS_BUILD_NUMBER"') '"$STATUS_MESSAGE"' - '"$TRAVIS_REPO_SLUG"'",
       "url": "'"$TRAVIS_BUILD_WEB_URL"'",
       "icon_url": "'$AVATAR'"
     },
